@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# 🌿 Aditya Kushwaha — Portfolio 2.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, high-performance personal portfolio website designed with an elegant editorial aesthetic. Built using **React, TypeScript, Vite, and TailwindCSS v4**, featuring smooth scroll dynamics, beautiful responsive typography, custom micro-animations, and direct WhatsApp chat integration.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- **🎨 Premium Editorial Design System**: Tailored HSL color palette featuring deep midnight slate and organic forest greens.
+- **📱 Fully Responsive Layout**: Custom mobile view optimizations, including a custom full-screen animated overlay navigation menu, left-aligned structured typography, and scaled headings.
+- **🚀 Ultra High Performance**: Powered by Vite and TypeScript, compiling in under 600ms.
+- **💫 Interactive Micro-Animations**: Smooth vertical parallax, scroll-driven interactive cards, and Aceternity-inspired glowing radial moving border effects.
+- **💬 Integrated Messaging**: Direct interactive WhatsApp Chat integrations, connecting standard navigation actions directly with messaging links.
+- **🎉 Interactive Milestones**: Confetti burst mechanics triggered upon entering viewport sections.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Core Framework**: React 19 + TypeScript
+- **Bundler & Tooling**: Vite 8
+- **Styling Engine**: TailwindCSS v4
+- **Animation Suite**: Framer Motion 12
+- **Interactions**: Canvas Confetti, Lenis Smooth Scroll
+- **Icons**: Lucide React + Official Brand Vectors
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Follow these steps to run the portfolio website locally on your machine.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Prerequisites
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Make sure you have **Node.js** (v18+) installed.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/AdityaKushwaha404/aditya_portfolio.git
+   cd aditya_portfolio
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Run Dev Server**:
+   ```bash
+   npm run dev
+   ```
+   Open your browser and navigate to `http://localhost:5173`.
+
+4. **Production Build**:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📦 Vercel Deployment
+
+This project is fully configured and ready for single-click deployment to Vercel.
+
+1. Go to your **Vercel Dashboard**.
+2. Click **Add New** → **Project**.
+3. Import this repository `aditya_portfolio`.
+4. Vercel will automatically detect the **Vite project preset**.
+5. Click **Deploy**. The `vercel.json` SPA router rules will handle routing cleanly.
+
+---
+
+## 📄 License
+
+Created by **Aditya Kushwaha** (kushwahaaditya431@gmail.com). Free to use for personal modifications.
