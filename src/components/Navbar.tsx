@@ -9,6 +9,7 @@ interface NavbarProps {
 export function Navbar({ navItems }: NavbarProps) {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [loaderFinished, setLoaderFinished] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,10 +19,22 @@ export function Navbar({ navItems }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).__loaderFinished) {
+      setLoaderFinished(true)
+      return
+    }
+    const handleFinished = () => {
+      setLoaderFinished(true)
+    }
+    window.addEventListener('loader-finished', handleFinished)
+    return () => window.removeEventListener('loader-finished', handleFinished)
+  }, [])
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={loaderFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${isScrolled
           ? 'bg-[#F8F7F4]/80 backdrop-blur-md border-b border-[#0B1020]/4 py-2'

@@ -8,11 +8,25 @@ export function HeroSection() {
   const heroRef = useRef(null)
 
   const [isMobile, setIsMobile] = useState(false)
+  const [loaderFinished, setLoaderFinished] = useState(false)
+
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).__loaderFinished) {
+      setLoaderFinished(true)
+      return
+    }
+    const handleFinished = () => {
+      setLoaderFinished(true)
+    }
+    window.addEventListener('loader-finished', handleFinished)
+    return () => window.removeEventListener('loader-finished', handleFinished)
   }, [])
 
   // Track scroll progress of the hero section container
@@ -145,10 +159,10 @@ export function HeroSection() {
                   <span key={idx} className="block overflow-hidden py-[4px]">
                     <motion.span
                       initial={isMobile ? { y: 0, rotate: 0 } : { y: "115%", rotate: 2 }}
-                      animate={{ y: 0, rotate: 0 }}
+                      animate={loaderFinished || isMobile ? { y: 0, rotate: 0 } : { y: "115%", rotate: 2 }}
                       transition={isMobile ? { duration: 0 } : {
                         duration: 0.95,
-                        delay: 0.25 + idx * 0.12,
+                        delay: 0.15 + idx * 0.12,
                         ease: [0.16, 1, 0.3, 1],
                       }}
                       className={`inline-block origin-left ${line.isItalicGreen ? 'premium-gradient-text' : ''} ${line.hasSquiggle ? 'animate-squiggle' : ''}`}
@@ -171,8 +185,8 @@ export function HeroSection() {
             {!isMobile && (
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
+                animate={loaderFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-[14.5px] text-[#626879] leading-[1.8] max-w-[440px] mb-8 font-medium text-left"
               >
                 Full Stack Developer focused on building fast, scalable, and intuitive web applications with clean architecture and exceptional user experiences.
@@ -182,8 +196,8 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <motion.div
               initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={isMobile ? { duration: 0 } : { duration: 0.8, delay: 0.95 }}
+              animate={loaderFinished || isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+              transition={isMobile ? { duration: 0 } : { duration: 0.8, delay: 0.55 }}
               className="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-8 w-full sm:w-auto justify-center md:justify-start"
             >
               <motion.a
@@ -217,8 +231,8 @@ export function HeroSection() {
             <motion.div
               style={{ y: portraitY, x: 75 }}
               initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: -20 }}
-              transition={{ duration: 1.2, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              animate={loaderFinished ? { opacity: 1, y: -20 } : { opacity: 0, y: 60 }}
+              transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="relative w-full h-full flex items-end justify-center pb-8"
             >
               {/* 1. Large ambient background glow (provides soft overall green field) */}

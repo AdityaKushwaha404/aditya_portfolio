@@ -47,6 +47,10 @@ function App() {
       if (loadedCount === totalCount) {
         setTimeout(() => {
           setIsLoading(false);
+          if (typeof window !== 'undefined') {
+            (window as any).__loaderFinished = true;
+            window.dispatchEvent(new Event('loader-finished'));
+          }
         }, 600); // 600ms smooth delay for premium transition
       }
     };
@@ -77,10 +81,10 @@ function App() {
             }}
             className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#0B1020]"
           >
-            {/* Signature Logo Inverted (4x Scale, smooth blur reveal) */}
+            {/* Signature Logo Inverted (5.5x Scale, smooth blur reveal) */}
             <motion.div
-              initial={{ opacity: 0, scale: 3.4, filter: "blur(6px)" }}
-              animate={{ opacity: 1, scale: 4.0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, scale: 4.8, filter: "blur(6px)" }}
+              animate={{ opacity: 1, scale: 5.5, filter: "blur(0px)" }}
               transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
               className="h-12 flex items-center overflow-visible select-none pointer-events-none mb-10"
             >
