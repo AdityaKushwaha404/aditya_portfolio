@@ -350,18 +350,18 @@ export function PortfolioNavbar({ navItems }: PortfolioNavbarProps) {
         </Navbar>
       </motion.div>
 
-      {/* ── MOBILE LOGO (Fixed top-left, visible below md only) ── */}
+      {/* ── MOBILE LOGO (Absolute top-left, visible below md only) ── */}
       <div
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed top-6 left-6 z-[9997] md:hidden h-12 cursor-pointer select-none flex items-center overflow-visible"
+        className="absolute top-6 left-2 z-[9997] md:hidden h-12 cursor-pointer select-none flex items-center overflow-visible"
       >
         <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply scale-[2.2] origin-left translate-y-[2px]" />
       </div>
 
-      {/* ── MOBILE HAMBURGER BUTTON (Fixed top-right, visible below md only) ── */}
+      {/* ── MOBILE HAMBURGER BUTTON (Absolute top-right, visible below md only) ── */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="fixed top-6 right-6 z-[9997] md:hidden w-12 h-12 rounded-full border border-[#0B1020]/10 flex items-center justify-center text-[#0B1020] bg-[#F8F7F4]/90 backdrop-blur-md shadow-md transition-all cursor-pointer hover:bg-white"
+        className="absolute top-6 right-6 z-[9997] md:hidden w-12 h-12 rounded-full border border-[#0B1020]/10 flex items-center justify-center text-[#0B1020] bg-[#F8F7F4]/90 backdrop-blur-md shadow-md transition-all cursor-pointer hover:bg-white"
         aria-label="Open menu"
       >
         <Menu className="w-5 h-5" />
@@ -383,7 +383,7 @@ export function PortfolioNavbar({ navItems }: PortfolioNavbarProps) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 setMobileOpen(false);
               }}
-              className="absolute top-6 left-6 h-12 cursor-pointer select-none flex items-center overflow-visible"
+              className="absolute top-6 left-2 h-12 cursor-pointer select-none flex items-center overflow-visible"
             >
               <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply scale-[2.2] origin-left translate-y-[2px]" />
             </div>
