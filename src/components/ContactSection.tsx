@@ -412,8 +412,8 @@ export function ContactSection() {
             © {new Date().getFullYear()} Aditya Kushwaha. Crafted with care.
           </p>
           
-          {/* Footer links with premium layoutId sliding underline hover */}
-          <div className="flex items-center gap-6">
+          {/* Footer links with premium layoutId sliding underline hover — desktop only */}
+          <div className="hidden md:flex items-center gap-6">
             {['Home', 'About', 'Experience', 'Achievements', 'Projects', 'Contact'].map((item, idx) => (
               <a
                 key={item}
