@@ -84,7 +84,7 @@ export function NavBody({ children, className, visible }: NavBodyProps) {
       className={cn(
         'mx-auto flex items-center justify-between overflow-hidden',
         visible
-          ? 'bg-[#F8F7F4]/60 backdrop-blur-md border border-[#0B1020]/8 px-6 py-3'
+          ? 'bg-[#F8F7F4]/60 backdrop-blur-md border border-[#0B1020]/8 px-6 py-2'
           : 'bg-transparent px-6 md:px-10 lg:px-16 py-4',
         className
       )}
@@ -313,9 +313,9 @@ export function PortfolioNavbar({ navItems }: PortfolioNavbarProps) {
   const Logo = () => (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className={`h-20 cursor-pointer select-none bg-transparent border-none p-0 flex items-center overflow-visible transition-all duration-300 ${visible ? '-ml-16 mr-6 md:mr-8' : ''}`}
+      className={`cursor-pointer select-none bg-transparent border-none p-0 flex items-center overflow-visible transition-all duration-300 ${visible ? 'h-10 -ml-12 mr-6 md:mr-8' : 'h-12'}`}
     >
-      <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply scale-[2.2] origin-left translate-y-[4px]" />
+      <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply scale-[1.8] origin-left translate-y-[2px]" />
     </button>
   )
 
