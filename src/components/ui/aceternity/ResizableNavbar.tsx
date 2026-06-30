@@ -350,6 +350,14 @@ export function PortfolioNavbar({ navItems }: PortfolioNavbarProps) {
         </Navbar>
       </motion.div>
 
+      {/* ── MOBILE LOGO (Fixed top-left, visible below md only) ── */}
+      <div
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed top-6 left-6 z-[9997] md:hidden h-12 cursor-pointer select-none flex items-center overflow-visible"
+      >
+        <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply scale-[2.2] origin-left translate-y-[2px]" />
+      </div>
+
       {/* ── MOBILE HAMBURGER BUTTON (Fixed top-right, visible below md only) ── */}
       <button
         onClick={() => setMobileOpen(true)}
@@ -369,6 +377,17 @@ export function PortfolioNavbar({ navItems }: PortfolioNavbarProps) {
             transition={{ duration: 0.35, ease: 'easeInOut' }}
             className="fixed inset-0 bg-[#F8F7F4]/98 backdrop-blur-2xl z-[9998] flex flex-col justify-center items-center md:hidden"
           >
+            {/* Mobile Logo inside Menu Overlay */}
+            <div
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setMobileOpen(false);
+              }}
+              className="absolute top-6 left-6 h-12 cursor-pointer select-none flex items-center overflow-visible"
+            >
+              <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply scale-[2.2] origin-left translate-y-[2px]" />
+            </div>
+
             {/* Close Button */}
             <button
               onClick={() => setMobileOpen(false)}
