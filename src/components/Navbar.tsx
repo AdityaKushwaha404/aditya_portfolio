@@ -29,12 +29,11 @@ export function Navbar({ navItems }: NavbarProps) {
         }`}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between">
-        {/* Logo — bold serif */}
         <div
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="text-[32px] font-serif font-bold tracking-tight text-[#0B1020] cursor-pointer select-none"
+          className="h-10 cursor-pointer select-none flex items-center"
         >
-          AK<span className="text-[#2C4A35]">.</span>
+          <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply" />
         </div>
 
         {/* Nav with animated hover pill */}

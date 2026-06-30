@@ -313,9 +313,9 @@ export function PortfolioNavbar({ navItems }: PortfolioNavbarProps) {
   const Logo = () => (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="text-[28px] font-serif font-bold tracking-tight text-[#0B1020] cursor-pointer select-none bg-transparent border-none"
+      className="h-10 cursor-pointer select-none bg-transparent border-none p-0 flex items-center"
     >
-      AK<span className="text-[#2C4A35]">.</span>
+      <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply" />
     </button>
   )
 
