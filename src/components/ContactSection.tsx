@@ -51,11 +51,11 @@ export function ContactSection() {
     setLoading(true)
     setError(null)
 
-    // Paste your Web3Forms access key here (Get one free at https://web3forms.com)
-    const accessKey = "YOUR_ACCESS_KEY_HERE"
+    // Load Web3Forms access key from environment variables (secured for private Git)
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
 
-    if (accessKey === "YOUR_ACCESS_KEY_HERE" || !accessKey) {
-      setError("Please paste your Web3Forms Access Key in src/components/ContactSection.tsx to enable email delivery. Get one free at web3forms.com.")
+    if (!accessKey) {
+      setError("Please configure VITE_WEB3FORMS_ACCESS_KEY environment variable in your Vercel settings or .env file.")
       setLoading(false)
       return
     }
