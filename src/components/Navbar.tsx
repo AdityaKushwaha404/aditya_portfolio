@@ -33,7 +33,7 @@ export function Navbar({ navItems }: NavbarProps) {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="h-20 cursor-pointer select-none flex items-center overflow-visible"
         >
-          <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply scale-[2.2] origin-left" />
+          <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply scale-[2.2] origin-left translate-y-[4px]" />
         </div>
 
         {/* Nav with animated hover pill */}
