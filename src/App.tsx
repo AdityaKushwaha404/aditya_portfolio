@@ -12,6 +12,23 @@ function App() {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Set scroll restoration to manual immediately on mount to prevent browser jumping
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  // Force scroll to top on loading completion
+  useEffect(() => {
+    if (!isLoading) {
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+      });
+    }
+  }, [isLoading]);
+
   useEffect(() => {
     // Array of critical visual assets to cache before rendering
     const criticalImages = [
@@ -30,7 +47,7 @@ function App() {
       if (loadedCount === totalCount) {
         setTimeout(() => {
           setIsLoading(false);
-        }, 500); // 500ms smooth delay for premium transition
+        }, 600); // 600ms smooth delay for premium transition
       }
     };
 
@@ -53,19 +70,19 @@ function App() {
         {isLoading && (
           <motion.div
             key="preloader"
-            initial={{ opacity: 1 }}
+            initial={{ y: 0 }}
             exit={{ 
-              opacity: 0,
-              transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+              y: "-100%",
+              transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
             }}
             className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#0B1020]"
           >
-            {/* Signature Logo Inverted */}
+            {/* Signature Logo Inverted (4x Scale, smooth blur reveal) */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="h-16 flex items-center overflow-visible select-none pointer-events-none mb-2"
+              initial={{ opacity: 0, scale: 3.4, filter: "blur(6px)" }}
+              animate={{ opacity: 1, scale: 4.0, filter: "blur(0px)" }}
+              transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+              className="h-12 flex items-center overflow-visible select-none pointer-events-none mb-10"
             >
               <img 
                 src="/signature_logo.png" 
@@ -84,9 +101,15 @@ function App() {
                 transition={{ duration: 0.1, ease: "easeOut" }}
               />
             </div>
-            <span className="text-[10px] tracking-[0.3em] text-white/30 uppercase font-bold mt-4 select-none">
+            
+            <motion.span 
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 0.4, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-[10px] tracking-[0.3em] text-white uppercase font-bold mt-4 select-none"
+            >
               Loading {loadingProgress}%
-            </span>
+            </motion.span>
           </motion.div>
         )}
       </AnimatePresence>
