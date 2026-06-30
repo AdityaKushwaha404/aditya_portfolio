@@ -33,6 +33,8 @@ export function ContactSection() {
   const isInView = useInView(ref, { once: false, margin: '-60px' })
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [focusedInput, setFocusedInput] = useState<string | null>(null)
   const [hoveredFooterIdx, setHoveredFooterIdx] = useState<number | null>(null)
 
@@ -44,9 +46,46 @@ export function ContactSection() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
+    setLoading(true)
+    setError(null)
+
+    // Paste your Web3Forms access key here (Get one free at https://web3forms.com)
+    const accessKey = "YOUR_ACCESS_KEY_HERE"
+
+    if (accessKey === "YOUR_ACCESS_KEY_HERE" || !accessKey) {
+      setError("Please paste your Web3Forms Access Key in src/components/ContactSection.tsx to enable email delivery. Get one free at web3forms.com.")
+      setLoading(false)
+      return
+    }
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      })
+
+      const result = await response.json()
+      if (result.success) {
+        setSent(true)
+      } else {
+        setError(result.message || 'Something went wrong. Please try again.')
+      }
+    } catch (err) {
+      setError('Failed to connect to the server. Please check your internet connection and try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const socials = [
@@ -329,17 +368,29 @@ export function ContactSection() {
                   </div>
                 </div>
 
+                {/* Error message */}
+                {error && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-[12px] font-medium text-red-400 bg-red-500/10 border border-red-500/20 px-4 py-3 rounded-xl leading-relaxed"
+                  >
+                    {error}
+                  </motion.p>
+                )}
+
                 {/* Submit */}
                 <div className="mt-2">
                   <Button
                     borderRadius="9999px"
                     containerClassName="h-[52px] w-full max-w-[200px]"
                     borderClassName="bg-[radial-gradient(circle_at_center,var(--color-primary-green)_0%,transparent_60%)]"
-                    className="bg-[#2C4A35] hover:bg-[#365A40] text-white font-semibold text-[14px] flex items-center justify-center gap-2 group transition-colors duration-300"
+                    className="bg-[#2C4A35] hover:bg-[#365A40] text-white font-semibold text-[14px] flex items-center justify-center gap-2 group transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     type="submit"
+                    disabled={loading}
                   >
-                    Send Message
-                    <Send className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 text-white" />
+                    {loading ? 'Sending...' : 'Send Message'}
+                    {!loading && <Send className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 text-white" />}
                   </Button>
                 </div>
               </form>
