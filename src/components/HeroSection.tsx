@@ -201,7 +201,7 @@ export function HeroSection() {
               className="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-8 w-full sm:w-auto justify-center md:justify-start"
             >
               <motion.a
-                href="https://drive.google.com/file/d/1_ROiFHX1CsFsgc0KhIaS2sCbh0mKfoQN/view?usp=sharing"
+                href="https://drive.google.com/file/d/1VhHCvvphPvXB-gS9RMU0xUb_MPTAqXy9/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={isMobile ? {} : { scale: 1.02 }}
