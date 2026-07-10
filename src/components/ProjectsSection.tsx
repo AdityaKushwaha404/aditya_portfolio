@@ -61,6 +61,18 @@ const getTagIcon = (tag: string) => {
       return <Key className="w-3.5 h-3.5 text-[#2563EB]" />
     case 'razorpay':
       return <CreditCard className="w-3.5 h-3.5 text-[#008ECF]" />
+    case 'next.js':
+      return <span className="text-[10px] font-bold text-black font-mono tracking-tight">N</span>
+    case 'typescript':
+      return <span className="text-[10px] font-bold text-[#3178C6] font-mono tracking-tight">TS</span>
+    case 'postgresql (neon)':
+      return <Database className="w-3.5 h-3.5 text-[#336791]" />
+    case 'prisma':
+      return <span className="text-[10px] font-bold text-[#2D3748] font-mono tracking-tight">▲</span>
+    case 'react query':
+      return <span className="text-[10px] font-bold text-[#FF4154] font-mono tracking-tight">RQ</span>
+    case 'resend':
+      return <span className="text-[10px] font-bold text-black font-mono tracking-tight">✉</span>
     default:
       return <Database className="w-3.5 h-3.5 text-slate-400" />
   }
@@ -69,6 +81,20 @@ const getTagIcon = (tag: string) => {
 const projects = [
   {
     number: '01',
+    name: 'Sentinel',
+    tagline: 'AI-Powered Infrastructure Monitoring SaaS',
+    description:
+      'A production-ready SaaS platform to monitor websites, APIs, and SSL certificates with automated health checks and real-time dashboards. Features secure serverless REST APIs, an AI-powered assistant to analyze logs, and Clerk/Resend integration.',
+    tags: ['Next.js', 'TypeScript', 'PostgreSQL (Neon)', 'Prisma', 'Tailwind CSS', 'React Query', 'Clerk', 'Resend'],
+    link: 'https://github.com/AdityaKushwaha404/sentinal',
+    images: [
+      '/sentinel1.png',
+      '/sentinel2.png'
+    ],
+    url: 'https://sentinaladitya-6lmyqjk6t-adityakushwaha404s-projects.vercel.app/'
+  },
+  {
+    number: '02',
     name: 'Rabbit',
     tagline: 'Digital Marketplace Web App',
     description:
@@ -82,7 +108,7 @@ const projects = [
     url: 'https://e-commerce-k-ji-q8g6.vercel.app/'
   },
   {
-    number: '02',
+    number: '03',
     name: 'AgriChain',
     tagline: 'Blockchain-based Agricultural Platform',
     description:
