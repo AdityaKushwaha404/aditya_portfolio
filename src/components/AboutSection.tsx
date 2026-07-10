@@ -264,7 +264,7 @@ export function AboutSection() {
               className="hidden md:block"
             >
               <motion.a
-                href="https://drive.google.com/file/d/1_ROiFHX1CsFsgc0KhIaS2sCbh0mKfoQN/view?usp=sharing"
+                href="https://drive.google.com/file/d/1zqAq4XDV3MKZ8yOXpUzmVO7sXCva7AHh/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3, boxShadow: "0 12px 30px rgba(44,74,53,0.20)" }}
