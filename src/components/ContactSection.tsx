@@ -95,7 +95,7 @@ export function ContactSection() {
   ]
 
   return (
-    <section id="contact" className={`relative w-full bg-[#0B1020] overflow-hidden scroll-mt-20 ${isMobile ? 'py-16' : 'py-32 lg:py-40'}`}>
+    <section id="contact" className={`relative w-full bg-[#0B1020] overflow-hidden scroll-mt-20 ${isMobile ? 'py-16' : 'pt-32 pb-20 lg:pt-40 lg:pb-24'}`}>
       
       {/* ── ATMOSPHERIC DARK BACKGROUND DECORATIVES ── */}
       <div className="absolute inset-0 pointer-events-none select-none">
