@@ -72,30 +72,20 @@ export function Navbar({ children, className }: NavbarProps) {
 export function NavBody({ children, className, visible }: NavBodyProps) {
   return (
     <motion.div
-      layout
       animate={{
         width: visible ? '60%' : '100%',
         y: visible ? 12 : 0,
         borderRadius: visible ? '9999px' : '0px',
         boxShadow: visible
           ? '0 8px 32px rgba(11,16,32,0.08), 0 2px 8px rgba(11,16,32,0.04)'
-          : '0 0px 0px rgba(0,0,0,0)',
-        backgroundColor: visible ? 'rgba(248, 247, 244, 0.6)' : 'rgba(248, 247, 244, 0)',
-        borderColor: visible ? 'rgba(11, 16, 32, 0.08)' : 'rgba(11, 16, 32, 0)',
-        backdropFilter: visible ? 'blur(12px)' : 'blur(0px)',
-        paddingTop: visible ? '8px' : '16px',
-        paddingBottom: visible ? '8px' : '16px',
-        paddingLeft: visible ? '24px' : '48px',
-        paddingRight: visible ? '24px' : '48px',
+          : 'none',
       }}
-      transition={{
-        type: 'spring',
-        stiffness: 180,
-        damping: 24,
-        mass: 0.8,
-      }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        'mx-auto flex items-center justify-between overflow-hidden border border-solid',
+        'mx-auto flex items-center justify-between overflow-hidden',
+        visible
+          ? 'bg-[#F8F7F4]/60 backdrop-blur-md border border-[#0B1020]/8 px-6 py-2'
+          : 'bg-transparent px-6 md:px-10 lg:px-16 py-4',
         className
       )}
     >
@@ -321,24 +311,12 @@ export function PortfolioNavbar({ navItems }: PortfolioNavbarProps) {
   }, [mobileOpen])
 
   const Logo = () => (
-    <motion.button
-      layout
+    <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      animate={{
-        height: visible ? 40 : 48,
-        marginLeft: visible ? -20 : 0,
-        marginRight: visible ? 20 : 0,
-      }}
-      transition={{
-        type: 'spring',
-        stiffness: 180,
-        damping: 24,
-        mass: 0.8,
-      }}
-      className="cursor-pointer select-none bg-transparent border-none p-0 flex items-center overflow-visible"
+      className={`cursor-pointer select-none bg-transparent border-none p-0 flex items-center overflow-visible transition-all duration-300 ${visible ? 'h-10 -ml-5 mr-5 md:mr-6' : 'h-12'}`}
     >
       <img src="/signature_logo.png" alt="Aditya" className="h-full w-auto object-contain mix-blend-multiply scale-[2.6] origin-left translate-y-[2px]" />
-    </motion.button>
+    </button>
   )
 
   return (

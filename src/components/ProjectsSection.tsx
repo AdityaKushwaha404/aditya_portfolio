@@ -91,7 +91,7 @@ const projects = [
       '/sentinel1.png',
       '/sentinel2.png'
     ],
-    url: 'https://sentinaladitya-6lmyqjk6t-adityakushwaha404s-projects.vercel.app/'
+    url: 'https://sentinel.adityakushwaha.online/'
   },
   {
     number: '02',
