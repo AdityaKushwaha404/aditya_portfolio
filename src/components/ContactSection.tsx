@@ -138,7 +138,7 @@ export function ContactSection() {
                     Let's build something <em className="text-[#6FA882] not-italic">remarkable.</em>
                   </span>
                 ) : (
-                  ["Let's build", "something", "remarkable."].map((line, idx) => (
+                  ["Let's build something", "remarkable."].map((line, idx) => (
                     <span key={idx} className="block overflow-hidden py-1">
                       <motion.span
                         initial={isMobile ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 }}
@@ -146,7 +146,7 @@ export function ContactSection() {
                         transition={isMobile ? { duration: 0 } : { duration: 0.85, delay: 0.1 + idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
                         className="inline-block"
                       >
-                        {idx === 2 ? <em className="text-[#6FA882] font-serif font-medium">{line}</em> : line}
+                        {idx === 1 ? <em className="text-[#6FA882] font-serif font-medium">{line}</em> : line}
                       </motion.span>
                     </span>
                   ))
