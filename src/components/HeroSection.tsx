@@ -149,10 +149,10 @@ export function HeroSection() {
               </div>
             )}
 
-            <h1 className={`font-serif ${isMobile ? 'font-extrabold' : 'font-bold'} text-[clamp(48px,12vw,120px)] leading-[1.05] md:leading-[0.92] text-[#0B1020] tracking-[-0.02em] mb-6 text-center md:text-left w-full`}>
+            <h1 className={`font-serif ${isMobile ? 'font-extrabold text-[clamp(30px,9.5vw,46px)]' : 'font-bold text-[clamp(48px,12vw,120px)]'} leading-[1.1] md:leading-[0.92] text-[#0B1020] tracking-[-0.02em] mb-6 text-center md:text-left w-full`}>
               {isMobile ? (
                 <span className="block px-2">
-                  Building digital <span className="premium-gradient-text text-[1.08em] italic font-serif font-medium inline-block">experiences</span> that matter.
+                  <span className="whitespace-nowrap">Building digital</span> <span className="premium-gradient-text text-[1.08em] italic font-serif font-medium inline-block">experiences</span> that matter.
                 </span>
               ) : (
                 headlineLines.map((line, idx) => (
